@@ -228,6 +228,81 @@
         .transfer-desc { font-size: 12px; opacity: 0.9; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .transfer-bottom { background: rgba(255,255,255,0.1); padding: 4px 14px; font-size: 10px; color: rgba(255,255,255,0.8); }
         .system-msg { text-align: center; font-size: 12px; color: #999; margin: 10px 0; }
+                /* ============ 🟢 灵动岛全自动修复补丁 (开始) 🟢 ============ */
+
+    /* 1. 修复所有通用顶栏 (微信详情、设置、世界书、记录等) */
+    #wechat-header,
+    #chat-detail-page > div:first-child,
+    #friend-info-page > div:first-child,
+    #settings-app-screen > div:first-child,
+    #appearance-app-screen > div:first-child,
+    #lorebook-screen > div:first-child,
+    #sms-app-screen .h-14,
+    #waimai-app-screen .h-12,
+    #record-app-screen .h-12,
+    #mqbx-app-screen .h-12,
+    #check-phone-app-screen .h-12,
+    #character-phone-screen .h-12,
+    #char-appearance-screen .h-12,
+    #memory-page > div:first-child,
+    #sms-memory-page > div:first-child,
+    #other-settings-page > div:first-child,
+    #character-settings-page > div:first-child,
+    #bubble-settings-page > div:first-child,
+    #friend-lorebook-page > div:first-child,
+    #inner-voice-page > div:first-child,
+    #placeholder-screen > div:first-child,
+    #me-detail-page > div:first-child,
+    #moments-compose-screen > div:first-child,
+    #compose-screen > div:first-child
+    {
+        padding-top: max(10px, env(safe-area-inset-top)) !important;
+        height: auto !important; /* 解除高度限制，让他自然撑开 */
+        min-height: 50px; /* 保证原本的高度 */
+        padding-bottom: 10px !important;
+        align-items: flex-end !important; /* 让文字和按钮沉到底部，避开灵动岛 */
+        box-sizing: content-box !important; /* 关键：防止padding把高度吃掉 */
+    }
+
+    /* 2. 修复论坛页面 (它稍微高一点) */
+    #view-square .h-14,
+    #forum-detail-screen .h-14
+    {
+        padding-top: max(10px, env(safe-area-inset-top)) !important;
+        height: auto !important;
+        min-height: 56px;
+        padding-bottom: 12px !important;
+        align-items: flex-end !important;
+        box-sizing: content-box !important;
+    }
+
+    /* 3. 修复 微信“我”的主页 (把它往下推，不让头像被切) */
+    .wx-me-header {
+         padding-top: calc(27px + env(safe-area-inset-top)) !important;
+    }
+
+    /* 4. 修复 朋友圈顶部 (让返回相机的图标下来) */
+    .moments-header img[src*="IMG-3174.png"] {
+        top: calc(1rem + env(safe-area-inset-top)) !important;
+    }
+
+    /* 5. 修复 音乐播放器 (全屏背景，内容下移) */
+    #music-player-screen, #voice-call-screen {
+        padding-top: env(safe-area-inset-top) !important;
+    }
+
+    /* 修复短信列表和聊天顶栏的错位 */
+    #sms-list-view > .h-14,
+    #sms-chat-view > .h-\[85px\] {
+        padding-top: env(safe-area-inset-top) !important;
+        height: auto !important;
+        min-height: 50px;
+        padding-bottom: 10px !important;
+        align-items: flex-end !important;
+    }
+
+    /* ============ 🟢 灵动岛全自动修复补丁 (结束) 🟢 ============ */
+
     </style>
 </head>
 <body id="desktop-body" class="h-full overflow-hidden flex flex-col bg-cover bg-center transition-all duration-300" style="background-image: none;" data-standalone="false">
