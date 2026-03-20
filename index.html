@@ -68,7 +68,13 @@
     <style id="custom-style">
         /* 终极安卓适配补丁：锁定屏幕的真实可见高度 */
         html, body { height: 100%; width: 100%; overflow: hidden; margin: 0; padding: 0; }
-        body { background: #f0f0f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body {
+        background: #f0f0f0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        /* 👇下面这两句是专门针对苹果灵动岛和刘海屏留白用的 */
+        padding-top: env(safe-area-inset-top);
+        box-sizing: border-box;
         .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 24px; }
         .app-icon { width: 60px; height: 60px; background: white; border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .app-icon:active { transform: scale(0.85); }
